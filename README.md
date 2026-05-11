@@ -1,18 +1,61 @@
 # CBT-Rader
+
 ## 基本步骤
-关于配置Livox SDK2, ROS 2与Fast-LIO等前置依赖的步骤，详见[前置步骤](https://ecnmh7533t3z.feishu.cn/wiki/YWXewBB0piWYG9kSJs0cFNNtnKg)
 
-1.打开Rader文件夹（地址为`/home/rader`），在Rader文件夹中打开新终端，并在终端中输入`bash rader.bash`
+关于配置 Livox SDK2、ROS 2 与 Fast-LIO 等前置依赖的步骤，详见：[前置步骤](https://ecnmh7533t3z.feishu.cn/wiki/YWXewBB0piWYG9kSJs0cFNNtnKg)
 
-2.执行该指令后应弹出2个终端窗口（窗口名分别为Livox Driver与Fast-LIO）以及Rviz窗口。在Rviz窗口中应可看到清晰的点云图。
+### 1. 启动程序
 
-## 注意事项 
-1.注意雷达功率为6.5W，工作电压为9~27V，**不允许接超过27V的电源**。供电线接充电宝**OUT1输出口**（即蓝色Type-C口）。
+打开 Rader 文件夹：
 
-2.激光雷达的半球为光学表面，请务必保证其表面洁净。**不要**用手直接触摸，更**不要**用擦镜纸，纳米布以外的布料去清洁光学表面。如果发现表面落灰，请用**气吹**进行清洁。
+```bash
+cd /home/rader
+```
 
-脚本内容如下：
-```#!/bin/bash
+在该目录下打开终端，并执行以下命令：
+
+```bash
+bash rader.bash
+```
+
+### 2. 检查启动结果
+
+执行指令后，应弹出以下窗口：
+
+- `Livox Driver` 终端窗口
+- `Fast-LIO` 终端窗口
+- `Rviz` 窗口
+
+在 `Rviz` 窗口中，应能够看到清晰的点云图。
+
+---
+
+## 注意事项
+
+### 1. 电源要求
+
+雷达功率为 **6.5W**，工作电压为 **9~27V**。
+
+> **不允许接超过 27V 的电源。**
+
+供电线接充电宝 **OUT1 输出口**，即蓝色 Type-C 口。
+
+### 2. 光学表面清洁
+
+激光雷达的半球为光学表面，请务必保证其表面洁净。
+
+请注意：
+
+- **不要**用手直接触摸光学表面。
+- **不要**使用擦镜纸、纳米布以外的布料清洁光学表面。
+- 如果发现表面落灰，请使用**气吹**进行清洁。
+
+---
+
+## 脚本内容
+
+```bash
+#!/bin/bash
 
 # --- 使用说明 ---
 # 1. 这个脚本用于在 Ubuntu 系统中启动两个 ROS2 节点：Livox 驱动和 Fast-LIO。
@@ -57,5 +100,5 @@ gnome-terminal --title="Fast-LIO" -- /bin/bash -c " \
     # 保持终端打开
     exec bash"
 
-echo "所有终端已启动。"```
-
+echo "所有终端已启动。"
+```
