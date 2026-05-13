@@ -28,19 +28,25 @@ sleep 1
 echo "正在启动 Fast-LIO 终端..."
 
 # 启动一个新的终端来运行 Fast-LIO 节点
+# gnome-terminal --title="Fast-LIO" -- /bin/bash -c " \
+#     echo 'ROS 节点: 正在启动 Fast-LIO...'; \
+    
+#     # --- 用户需要修改的部分 ---
+#     # 请将下面的路径 '/home/c/ws_Fast_LIO' 更改为您自己电脑上 Fast-LIO 工作空间的绝对路径。
+#     # 例如: source /home/YOUR_USERNAME/YOUR_FAST_LIO_WORKSPACE/install/setup.bash
+#     source /home/c/ws_Fast_LIO/install/setup.bash; \
+    
+#     # 启动 Fast-LIO 建图，并指定MID360的配置文件
+#     # 请确保 'mid360.yaml' 文件位于 fast_lio 包的正确配置路径下。
+#     ros2 launch fast_lio mapping.launch.py config_file:=mid360.yaml; \
+    
+#     # 保持终端打开
+#     exec bash"
+
 gnome-terminal --title="Fast-LIO" -- /bin/bash -c " \
     echo 'ROS 节点: 正在启动 Fast-LIO...'; \
-    
-    # --- 用户需要修改的部分 ---
-    # 请将下面的路径 '/home/c/ws_Fast_LIO' 更改为您自己电脑上 Fast-LIO 工作空间的绝对路径。
-    # 例如: source /home/YOUR_USERNAME/YOUR_FAST_LIO_WORKSPACE/install/setup.bash
     source /home/c/ws_Fast_LIO/install/setup.bash; \
-    
-    # 启动 Fast-LIO 建图，并指定MID360的配置文件
-    # 请确保 'mid360.yaml' 文件位于 fast_lio 包的正确配置路径下。
     ros2 launch fast_lio mapping.launch.py config_file:=mid360.yaml; \
-    
-    # 保持终端打开
     exec bash"
 
 echo "所有终端已启动。"
